@@ -16,15 +16,17 @@ import {
       case FETCH_USERS_REQUEST:
         return {
           ...state,
-          loading: true,
+          loading: true
           
         }
       case FETCH_USERS_SUCCESS:
         console.log('action red', action)
         console.log('state : ',state)
+       
         return {
           loading: false,
           users: action.payload,
+          page:action.payload.page,
           error: ''
         }
      

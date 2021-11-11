@@ -1,11 +1,12 @@
 import axios from 'axios';
 import {FETCH_USERS_FAILURE,FETCH_USERS_SUCCESS,FETCH_USERS_REQUEST} from './actionTypes';
 
-   export const getUsers = () => {
+   export const getUsers = (pageNumber) => {
+     console.log("pagenumber",pageNumber)
       return (dispatch) => {
         dispatch(fetchUsersRequest())
         axios
-          .get('https://randomuser.me/api/?results=15')
+          .get(`https://randomuser.me/api/?results=15&page=${pageNumber}`)
           .then(response => {
             const users = response.data
             console.log('users' ,users)

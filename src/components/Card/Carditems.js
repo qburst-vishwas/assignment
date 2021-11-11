@@ -5,17 +5,17 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import './card.css';
-import axios from 'axios';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { useNavigate,Link} from 'react-router-dom';
 import { connect } from 'react-redux'
 import {getUsers} from '../../reducers/index';
 
-const Carditems = ({userData,getUsers}) => {
+const Carditems = ({userData,getUsers,page}) => {
   console.log("userData",userData)
  const userInfo=userData.users.results
   console.log("userinfo",userInfo)
+  console.log("pagenumber",page)
   const navigate=useNavigate();
    
   //  const [page, setPage] = useState(1);
@@ -35,20 +35,18 @@ const Carditems = ({userData,getUsers}) => {
 // }
 
   useEffect(() =>{
-       getUsers();
-  },[]);
+       getUsers(page);
+  },[page]);
 
    const clickFunction=()=>{
      console.log("clicked");
      navigate('/carddetails',)
    }
-   const handleChange = (event, value) => {
-   // setPage(event.target.innerText);
-   // getUsers(page)
+   const handleChange = (event) => {
+    getUsers(event.target.innerText);
   };
   console.log("user info", userInfo)
     return (
-    
         <>
         <div className="card-holder" >
         <Grid className="container" container alignItems="stretch">
@@ -81,7 +79,7 @@ const Carditems = ({userData,getUsers}) => {
        </Grid>
    </div>
    <Stack spacing={3} className="page">
-      <Pagination count={10} color="primary" variant="outlined"  onChange={handleChange}/>
+      <Pagination count={10} color="primary" variant="outlined" page={page} onChange={handleChange}/>
     </Stack>
  </>
     )
@@ -95,7 +93,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getUsers: () => dispatch(getUsers())
+    getUsers: (page) => dispatch(getUsers(page))
   }
 }
 
