@@ -1,27 +1,38 @@
-.info{
-    position: absolute;
-    right:25em;
-    top: 9em;
+.info {
+  position: absolute;
+  right: 25em;
+  top: 9em;
 }
 
-.firstCol{
-    font-size:2.18em;
-    height: 0.625em;
+.firstCol {
+  font-size: 2.18em;
+  height: 0.625em;
 }
-.secondCol{
-    height: 3em;
-    font-size: 30px;
-    padding-left: 0.7em;
-    display: "block";
-
-}
-
-.lists{
-    list-style-type: none;
-    
+.secondCol {
+  height: 3em;
+  font-size: 30px;
+  padding-left: 0.7em;
+ 
 }
 
-.details{
-    width: 100%;
-    margin: 0 auto;
+.lists {
+  list-style-type: none;
+}
+
+.details {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.profilePicture {
+  width: 20em;
+  padding-top: 1em;
+}
+.name {
+  padding-left: 1em;
+  font-size: 2em;
+}
+.title{
+  text-align: center;
+  font-size: 3em;
 }

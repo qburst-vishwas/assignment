@@ -9,43 +9,51 @@ import axios from 'axios';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { useNavigate,Link} from 'react-router-dom';
+import { connect } from 'react-redux'
+import {getUsers} from '../../reducers/index';
 
-const Carditems = () => {
+const Carditems = ({userData,getUsers}) => {
+  console.log("userData",userData)
+ const userInfo=userData.users.results
+  console.log("userinfo",userInfo)
   const navigate=useNavigate();
-    const [users,setUsers]=useState([]);
-    const [page, setPage] = useState(1);
+   
+  //  const [page, setPage] = useState(1);
 
-    const getUsers= async (pageNumber) =>{
-    try {
-      axios.get("https://randomuser.me/api/?results=15&page={pageNumber}")
-      .then(res =>{
-        setUsers(res.data.results)
-        console.log(res.data.results);
-      })
-      // setUsers(data);
-      // console.log(data)
-  } catch (error) {
-      console.log("Error "+ error);
-  }
-}
+//     const getUsers= async (pageNumber) =>{
+//     try {
+//       axios.get("https://randomuser.me/api/?results=15&page={pageNumber}")
+//       .then(res =>{
+//         setUsers(res.data.results)
+//         console.log(res.data.results);
+//       })
+//       // setUsers(data);
+//       // console.log(data)
+//   } catch (error) {
+//       console.log("Error "+ error);
+//   }
+// }
 
   useEffect(() =>{
-       getUsers(page);
-  },[page]);
+       getUsers();
+  },[]);
 
    const clickFunction=()=>{
      console.log("clicked");
      navigate('/carddetails',)
    }
    const handleChange = (event, value) => {
-    setPage(event.target.innerText);
+   // setPage(event.target.innerText);
    // getUsers(page)
   };
+  console.log("user info", userInfo)
     return (
+    
         <>
         <div className="card-holder" >
         <Grid className="container" container alignItems="stretch">
-        {users.map((user,idx) => {
+       
+        {userInfo && userInfo.map((user,idx) => {
           return(
             <>
             <Grid item lg={4}  className="cards">
@@ -65,27 +73,30 @@ const Carditems = () => {
                    </Typography>
                  </CardContent>
                </CardActionArea>
-             
-          
            </Link>
            </Grid>
            </>
         )})
-          
           }
-         
        </Grid>
    </div>
    <Stack spacing={3} className="page">
-      <Pagination count={10} color="primary" variant="outlined" page={page} onChange={handleChange}/>
+      <Pagination count={10} color="primary" variant="outlined"  onChange={handleChange}/>
     </Stack>
  </>
-   
     )
-       
-    
-   
-  
+
+}
+const mapStateToProps = state => {
+  return {
+    userData: state.user
+  }
 }
 
-export default Carditems
+const mapDispatchToProps = dispatch => {
+  return {
+    getUsers: () => dispatch(getUsers())
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Carditems)

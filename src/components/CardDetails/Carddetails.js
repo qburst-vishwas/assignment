@@ -1,26 +1,20 @@
 import React from 'react'
-import { useLocation,useNavigate } from 'react-router-dom';
+import { useLocation} from 'react-router-dom';
 import './carddetails.css'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const Carddetails = (props) => {
   const location=useLocation();
-  const navigate=useNavigate();
   console.log(location);
  // console.log({state})
 
- const backButton=()=>{
-  console.log("clicked");
-  navigate('/',)
-}
+ 
     return (
         <div className="details">
-            <div style={{backgroundColor: "#edf5e1",fontSize:"2em"}}>
-             <ArrowBackIcon onClick={backButton} style={{width:"2em",height:"2em",paddingTop:"0.7em"}}></ArrowBackIcon>
-             <h1 style={{textAlign: "center",fontSize:"2em",marginTop:"-0.9em"}}>Profile information of {location.state.firstName}</h1>
-             </div>
-             <img alt="profile" src={location.state.picture} style={{width: "15em",paddingTop:"1em"}}></img>
-             <h3 style={{paddingLeft: "1em",fontSize:"2em"}}>{location.state.firstName} {location.state.lastName}</h3>
+             <h1 className="title">Profile information of {location.state.firstName}</h1>
+             <img className="profilePicture" alt="profile" src={location.state.picture} ></img>
+             <h3 className="name">{location.state.firstName} {location.state.lastName}</h3>
+
              <div className="info">
                 <ul className="lists">
                   <li>

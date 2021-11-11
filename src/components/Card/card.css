@@ -1,41 +1,38 @@
-.container{
-    padding:0 5%;
-    width:100%;
-    margin:0;
-    display:flex;
-    flex-direction: row;
-    text-align: center;
+.container {
+  padding: 0 5%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
 }
 
 .card-holder {
-padding:0 5%;
-color: black;
-display: flex;
-flex-direction: row;
-justify-content: center;
-flex-wrap: wrap;  /* for displaying in multiple lines */
+  padding: 0 5%;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap; /* for displaying in multiple lines */
 }
 
-.cards{
-width: 18em;
-margin: 1em;
-padding: 1em;
-
+.cards {
+  width: 18em;
+  margin: 1em;
+  padding: 1em;
 }
 .cardActions {
-
-display: flex;
-justify-content:space-between;
-
+  display: flex;
+  justify-content: space-between;
 }
 
-.content{
-background-color: #24ACCE;
-height: 7em;
+.content {
+  background-color: #24acce;
+  height: 7em;
 }
 
-.page{
-   margin: auto;
-   width: 28%;
-   padding-top: 1em;
+.page {
+  margin: auto;
+  width: 28%;
+  padding-top: 1em;
 }
